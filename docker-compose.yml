@@ -1,0 +1,36 @@
+version: '3'
+
+volumes:
+  document_root:
+    driver_opts:
+      type: none
+      device: /c/dev/docker/data
+      o: bind
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: telepath-db
+    ports:
+      - 3306:3306
+    environment:
+        MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        MYSQL_DATABASE: sample
+        MYSQL_USER: example
+        MYSQL_PASSWORD: example
+    volumes:
+      - document_root:/var/lib/mysql
+    networks:
+      - telepath-net
+  app:
+    build: ./docker/app
+    image: sh3eys/telepath
+    container_name: telepath-app
+    ports:
+      - 8080:3000
+    networks:
+      - telepath-net
+
+networks:
+  telepath-net:
+    driver: bridge
