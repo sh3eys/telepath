@@ -13,11 +13,11 @@ Simple Chat
 
 ## Usage
 
-build and run in docker
+### compose
 
 ```
-$ docker build -t <username>/<appname> .
-$ docker run -p <outside port>:3000 -d <username>/<appname>
+$ docker-compose build
+$ docker-compose up -d
 
 and connect to http://localhost:<outside port>
 ```
