@@ -4,6 +4,8 @@
   "description": "Simple Chat app",
   "dependencies": {
     "express": "^4.15.2",
+    "log4js": "^6.3.0",
+    "mysql": "^2.18.1",
     "socket.io": "^2.3.0"
   }
 }
